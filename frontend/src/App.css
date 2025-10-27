@@ -4,8 +4,9 @@ body {
   background: #f8fafc;
 }
 
+/* Main content area, ensures pages clear fixed navbar */
 .main-content {
-  padding-top: 56px; /* matches Navigation bar height */
+  padding-top: 56px; /* Same height as your nav bar */
   min-height: 94vh;
   width: 100%;
   box-sizing: border-box;
@@ -23,6 +24,7 @@ body {
   }
 }
 
+/* Universal card + form styling for all pages */
 .card, .form-container, .info-card {
   margin: 28px auto;
   max-width: 420px;
@@ -74,8 +76,7 @@ body {
   outline: none;
 }
 
-.form-input:focus,
-.form-textarea:focus {
+.form-input:focus, .form-textarea:focus {
   border-color: #5d8afc;
   background: #f3faff;
 }
@@ -129,15 +130,88 @@ body {
   margin-bottom: 14px;
 }
 
-.form-textarea {
-  resize: vertical;
-  min-height: 70px;
-  max-height: 250px;
+/* Posts page grid + card styles (if used globally) */
+.posts-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+  width: 100%;
+  padding-top: 10px;
+}
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  max-width: 1000px;
+  width: 99vw;
+  margin: 0 auto;
+}
+.post-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 18px rgba(48,102,190,0.14);
+  padding: 22px 13px 17px 17px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 90vw;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.post-card h3 {
+  font-size: 1.17rem;
+  color: #2969b7;
+  margin-top: 0;
+  margin-bottom: 11px;
+  font-weight: bold;
+  line-height: 1.18;
+}
+.post-content {
+  max-width: 98vw;
+  margin-bottom: 14px;
+}
+.post-para {
+  margin: 0 0 10px 0;
+  font-size: 1.07rem;
+  line-height: 1.7;
+  color: #23282d;
+  text-align: left;
+  word-break: break-word;
+}
+.meta {
+  font-size: 1rem;
+  color: #5d8afc;
+  margin-top: 8px;
+  font-style: italic;
+  text-align: right;
 }
 
-/* Responsive tweaks for small screens */
+/* Responsive grid tweaks */
+@media (max-width: 900px) {
+  .posts-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 97vw;
+    padding: 0 2vw;
+  }
+  .post-card {
+    max-width: 99vw;
+    padding: 13px 7px 10px 11px;
+  }
+  .post-card h3 { font-size: 1.09rem; }
+}
+@media (max-width: 600px) {
+  .post-card {
+    padding: 9px 3px 8px 7px;
+    border-radius: 7px;
+  }
+}
+
+/* Extra responsive tweaks for very small devices */
 @media (max-width: 400px) {
   .form-title, .info-title { font-size: 1.02rem; }
-  .form-input, .form-textarea { font-size: 0.91rem; }
+  .form-input, .form-textarea, .posts-grid, .post-card, .info-card { font-size: 0.91rem; }
   .form-btn { font-size: 0.91rem; padding: 7px 8px; }
 }

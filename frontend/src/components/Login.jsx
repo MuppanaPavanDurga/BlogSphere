@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import '../App.css'; // Use App.css if preferred for global classes
+import '../styles/Login.css';
+ // Use App.css if preferred for global classes
 
 function Login() {
   const [email, setEmail] = useState("");
