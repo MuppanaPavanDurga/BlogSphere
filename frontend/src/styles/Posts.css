@@ -53,16 +53,16 @@ body {
   border-radius: 22px;
   padding: 34px 28px 26px 28px;
   width: 100%;
-  max-width: 540px;
-  min-width: 250px;
+  max-width: 850px;         /* <<== WIDER */
+  min-width: 270px;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
   align-items: flex-start;
-  justify-content: center;
-  gap: 14px;
+  gap: 18px;
+  box-sizing: border-box;
   margin: 0 auto;
 }
+
 
 .post-card h3 {
   font-size: 1.37rem;

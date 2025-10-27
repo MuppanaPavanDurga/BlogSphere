@@ -24,20 +24,23 @@
   margin-bottom: 24px;
 }
 
-.profile-card {
-  background: rgba(245,233,226,0.96);
+.post-card {
+  background: rgba(245,233,226,0.97);
   border: 2px solid #eaac8b;
-  box-shadow: 0 8px 32px rgba(106, 17, 203, 0.14);
-  border-radius: 25px;
-  padding: 43px 38px 32px 38px;
-  max-width: 460px;
-  width: 96vw;
+  box-shadow: 0 4px 18px rgba(106,17,203,0.13);
+  border-radius: 22px;
+  padding: 34px 28px 26px 28px;
+  width: 100%;
+  max-width: 850px;         /* <<== WIDER */
+  min-width: 270px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 18px;
   box-sizing: border-box;
+  margin: 0 auto;
 }
+
 
 .profile-card img {
   width: 77px;
