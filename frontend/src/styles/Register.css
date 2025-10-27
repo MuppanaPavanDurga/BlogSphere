@@ -5,8 +5,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  /* Animated gradient background */
   background: linear-gradient(120deg, #6d597a 0%, #22223b 70%, #eaac8b 100%);
   background-size: 400% 400%;
   animation: gradientMove 14s ease infinite;
@@ -30,7 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
   box-sizing: border-box;
 }
 
@@ -38,7 +36,6 @@
   font-size: 2.2rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 10px;
   color: transparent;
   background: linear-gradient(45deg, #6d597a, #eaac8b);
   background-clip: text;
@@ -87,7 +84,7 @@
   background: rgba(254, 202, 202, 0.9);
   border-radius: 11px;
   padding: 11px;
-  margin-top: 15px;
+  margin-top: 10px;
   font-weight: 500;
   text-align: center;
   width: 100%;
@@ -99,7 +96,7 @@
   background: rgba(198, 246, 213, 0.9);
   border-radius: 11px;
   padding: 11px;
-  margin-top: 15px;
+  margin-top: 10px;
   font-weight: 500;
   text-align: center;
   width: 100%;
@@ -109,42 +106,12 @@
 /* Responsive */
 @media (max-width: 600px) {
   .register-form {
-    padding: 25px 15px;
+    padding: 25px 12px;
     border-radius: 16px;
     width: 97vw;
-    gap: 15px;
+    gap: 12px;
   }
-  
-  .register-title {
-    font-size: 1.6rem;
-  }
-  
-  .register-form input {
-    font-size: 0.95rem;
-    padding: 12px 14px;
-  }
-  
-  .register-form button {
-    padding: 12px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .register-form {
-    padding: 20px 10px;
-  }
-  
-  .register-title {
-    font-size: 1.4rem;
-  }
-  
-  .register-form input {
-    font-size: 0.9rem;
-    padding: 10px 12px;
-  }
-  
-  .register-form button {
-    font-size: 0.95rem;
-  }
+  .register-title { font-size: 1.4rem; }
+  .register-form input { font-size: 0.93rem; padding: 11px 9px; }
+  .register-form button { font-size: 1rem; padding: 9px; }
 }
