@@ -82,12 +82,13 @@
 
 .personal-post {
   width: 100vw;
-  max-width: 650px;
+  max-width: 760px;
   margin: 0 auto 40px auto;
   padding: 0 2vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 35px;
 }
 
 #home-head {
@@ -99,64 +100,64 @@
   margin-top: 6px;
 }
 
+/* MATCHES POSTS PAGE CARD STYLE */
 .post-card {
   background: rgba(245,233,226,0.97);
   border: 2px solid #eaac8b;
-  border-radius: 19px;
-  box-shadow: 0 4px 18px rgba(106,17,203,0.09);
-  padding: 28px 18px 22px 18px;
-  margin-bottom: 18px;
-  width: 97vw;
-  max-width: 565px;
-  box-sizing: border-box;
+  box-shadow: 0 4px 18px rgba(106,17,203,0.13);
+  border-radius: 22px;
+  padding: 34px 28px 26px 28px;
+  width: 100%;
+  max-width: 540px;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
   align-items: flex-start;
-  justify-content: center;
-  position: relative;
+  gap: 14px;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
-#head {
-  font-size: 1.17rem;
-  font-weight: 700;
+.post-head {
+  font-size: 1.37rem;
+  font-weight: bold;
   color: #6d597a;
-  margin-bottom: 7px;
-  line-height: 1.2;
+  margin: 0 0 6px 0;
   word-break: break-word;
+  line-height: 1.22;
 }
 
 .post-content {
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .post-para {
-  font-size: 1.09rem;
-  color: #31214d;
-  line-height: 1.72;
-  margin: 0 0 9px 0;
+  font-size: 1.13rem;
+  color: #241140;
+  line-height: 1.82;
+  margin-bottom: 12px;
   word-break: break-word;
-  white-space: pre-wrap;
+  white-space: pre-line;
+  text-align: left;
+  letter-spacing: 0.01em;
 }
 
-#author {
-  font-size: 1.01rem;
-  color: #5661a6;
+.meta {
+  font-size: 1.02rem;
+  color: #5761a5;
   font-style: italic;
   text-align: right;
   width: 100%;
-  margin-top: 5px;
+  margin-top: 2px;
   margin-bottom: 0;
 }
 
-/* Button group for edit/delete */
 .button-group {
   display: flex;
   gap: 12px;
   margin-top: 2px;
 }
-
 .button-group button {
   padding: 8px 17px;
   background: linear-gradient(90deg, #eaac8b 66%, #6d597a 100%);
@@ -184,26 +185,16 @@
 }
 
 /* Responsive tweaks */
-@media (max-width: 700px) {
-  .profile-card {
-    padding: 20px 7px 15px 7px;
-    border-radius: 16px;
-    max-width: 97vw;
-  }
-  .personal-post {
-    max-width: 99vw; padding:0;
-  }
-  .post-card {
-    padding: 13px 7px;
-    border-radius: 12px;
-    max-width: 99vw;
-    gap: 10px;
-  }
-  #head, .post-content, #author, #home-head { font-size: 0.99rem;}
-  .button-group button { font-size:0.92rem;padding:6px 11px;}
+@media (max-width: 800px) {
+  .personal-post { max-width: 99vw; gap: 18px;}
+  .post-card { max-width: 99vw; padding: 15px 7px 13px 7px; border-radius: 14px;}
+  .post-head { font-size: 1.13rem;}
+  .post-para { font-size: 1rem;}
+  .meta { font-size: 0.97rem;}
+  .button-group button { font-size: 0.93rem; padding:6px 11px;}
 }
-
-@media (max-width: 400px) {
-  .post-card { padding: 7px 2vw 7px 2vw; border-radius: 10px;}
-  #head, .post-content, #author { font-size: 0.94rem;}
+@media (max-width: 500px) {
+  .post-card { padding: 9px 2vw 9px 2vw; border-radius: 10px;}
+  .post-head { font-size: 1rem;}
+  .post-para { font-size: 0.97rem;}
 }

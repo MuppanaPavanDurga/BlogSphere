@@ -61,6 +61,14 @@ function Profile() {
     }
   }
 
+  function formatProfileContent(content) {
+    return content
+      ? content.split(/\r?\n\r?\n/).map((para, idx) =>
+          <p className="post-para" key={idx}>{para.trim()}</p>
+        )
+      : null;
+  }
+
   if (checkingAuth) return null;
   if (!username) {
     return (
@@ -92,9 +100,11 @@ function Profile() {
         {posts.length > 0 ? (
           posts.map((post) => (
             <div className="post-card" key={post._id}>
-              <h2 id="head">{post.title}</h2>
-              <h2 id="content">{post.content}</h2>
-              <h2 id="author">-- {post.author}</h2>
+              <div className="post-head">{post.title}</div>
+              <div className="post-content">
+                {formatProfileContent(post.content)}
+              </div>
+              <div className="meta">-- {post.author}</div>
               <div className="button-group">
                 <button onClick={() => handleEdit(post)}>Edit</button>
                 <button onClick={() => handleDelete(post._id)}>Delete</button>
@@ -109,4 +119,5 @@ function Profile() {
     </div>
   );
 }
+
 export default Profile;
