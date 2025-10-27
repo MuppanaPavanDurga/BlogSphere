@@ -7,9 +7,12 @@ import Profile from "./components/Profile";
 import CreatePost from "./components/CreatePost";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import Posts from "./components/Posts"; // <-- Import here
+
 function App() {
   return (
     <BrowserRouter>
+    <div className="main-content">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,8 +22,11 @@ function App() {
         <Route path="/createpost" element={<CreatePost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
+        <Route path="/posts" element={<Posts />} /> {/* <-- Add this */}
       </Routes>
+      </div>
     </BrowserRouter>
   );
 }
+
 export default App;
