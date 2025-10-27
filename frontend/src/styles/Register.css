@@ -1,0 +1,60 @@
+.register-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: linear-gradient(120deg, #22223b, #6d597a 60%, #eaac8b 99%);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+@keyframes gradientMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+.register-input {
+  display: flex;
+  flex-direction: column;
+  row-gap: 22px;
+  background: rgba(245,233,226,0.96);
+  border: 2px solid #6d597a;
+  box-shadow: 0 8px 32px 4px rgba(106, 17, 203, 0.14);
+  border-radius: 22px;
+  padding: 44px 32px;
+  align-items: center;
+  width: 350px;
+  max-width: 96vw;
+}
+.register-input input {
+  padding: 12px;
+  border-radius: 9px;
+  background-color: #f7dedc;
+  text-align: center;
+  border: 1.4px solid #eaac8b;
+  width: 100%;
+  font-size: 1rem;
+  color: #22223b;
+}
+.register-input input:focus { border-color: #b5838d; outline: none; }
+.register-input button {
+  padding: 12px; width: 100%; border-radius: 21px; border: none;
+  background: linear-gradient(120deg, #eaac8b 62%, #b5838d 100%);
+  color: #22223b;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.3s, color 0.3s;
+}
+.register-input button:hover {
+  background: linear-gradient(120deg, #b5838d 60%, #eaac8b 100%);
+  color: #fff;
+}
+#output {
+  margin-top: 22px;
+  width: 350px;
+  max-width: 96vw;
+  padding: 13px;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #eaac8b33;
+  color: #721c24;
+}

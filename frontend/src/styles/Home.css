@@ -1,0 +1,33 @@
+.home-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #22223b, #6d597a 70%, #eaac8b 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 16s ease infinite;
+  box-sizing: border-box;
+  padding-top: 70px;
+}
+
+@keyframes gradientMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+.logout-btn {
+  padding: 8px 22px;
+  margin-left: 20px;
+  background: #ff7766;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.logout-btn:hover {
+  background: #f33;
+}

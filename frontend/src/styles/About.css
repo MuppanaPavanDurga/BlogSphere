@@ -1,0 +1,22 @@
+body {
+  background: linear-gradient(120deg, #6d597a 6%, #22223b 74%, #eaac8b 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 13s ease infinite; margin: 0; padding: 0; min-height: 100vh;
+}
+@keyframes gradientMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+.about-container {
+  width: 90vw; max-width: 570px; margin: 100px auto; padding: 38px 28px 30px 28px; background: linear-gradient(120deg, #f5e9e2 72%, #eaac8b 98%);
+  border: 2.5px solid #eaac8b; border-radius: 18px; box-shadow: 0 9px 32px 5px rgba(106, 17, 203, 0.11); color: #22223b; position: relative; z-index: 2;
+}
+.about-container h2 {
+  font-size: 2.2rem; color: #b5838d; margin-bottom: 15px; text-align: center; font-family: 'Segoe UI', 'Times New Roman', Times, serif; font-weight: bold;
+  background: linear-gradient(95deg, #eaac8b, #6d597a 95%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; padding-bottom: 5px;
+}
+.about-container h3 { font-size: 1.4rem; color: #6d597a; margin-top: 28px; margin-bottom: 12px; font-family: 'Segoe UI', 'Times New Roman', Times, serif; font-weight: bold; letter-spacing: 0.1px;}
+.about-container p { font-size: 1.28rem; color: #22223b; line-height: 1.67; text-align: justify; margin-bottom: 16px; font-family: 'Segoe UI', 'Times New Roman', Times, serif; letter-spacing: 0.03em; }
+.features-list { text-align: left; margin-left: 15px; padding-left: 0; list-style-type: disc; }
+.features-list li { font-size: 1.16rem; line-height: 1.64; color: #b5838d; margin-bottom: 8px; font-family: 'Segoe UI', 'Times New Roman', Times, serif; font-weight: 500; letter-spacing: 0.04em; }
