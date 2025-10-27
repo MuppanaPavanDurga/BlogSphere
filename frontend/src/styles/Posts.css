@@ -9,10 +9,10 @@
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
   max-width: 1000px;
-  width: 100%;
+  width: 99vw;
   margin: 0 auto;
 }
 
@@ -20,32 +20,33 @@
   background: #fff;
   border-radius: 14px;
   box-shadow: 0 2px 18px rgba(48,102,190,0.14);
-  padding: 25px 22px 16px 22px;
+  padding: 22px 13px 17px 17px;
   min-height: 120px;
-  transition: box-shadow 0.18s, transform 0.18s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 550px;
   margin: 0 auto;
+  max-width: 90vw;
+  transition: box-shadow 0.18s, transform 0.18s;
 }
 
 .post-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.17rem;
   color: #2969b7;
   margin-top: 0;
-  margin-bottom: 14px;
+  margin-bottom: 11px;
   font-weight: bold;
   line-height: 1.18;
 }
 
 .post-content {
-  max-width: 680px;
+  max-width: 98vw;
+  margin-bottom: 14px;
 }
 
 .post-para {
   margin: 0 0 10px 0;
-  font-size: 1.09rem;
+  font-size: 1.07rem;
   line-height: 1.7;
   color: #23282d;
   text-align: left;
@@ -55,31 +56,31 @@
 .meta {
   font-size: 1rem;
   color: #5d8afc;
-  margin-top: 12px;
+  margin-top: 8px;
   font-style: italic;
   text-align: right;
 }
 
-/* Responsive tweaks: mobile/tablet */
+/* Responsive */
 @media (max-width: 900px) {
   .posts-grid {
     grid-template-columns: 1fr;
-    gap: 22px;
-    max-width: 95vw;
+    gap: 20px;
+    max-width: 97vw;
     padding: 0 2vw;
   }
   .post-card {
-    max-width: 97vw;
-    padding: 13px 9px 10px 13px;
+    max-width: 99vw;
+    padding: 13px 7px 10px 11px;
   }
   .post-card h3 {
-    font-size: 1.14rem;
+    font-size: 1.09rem;
   }
 }
 
 @media (max-width: 600px) {
   .post-card {
-    padding: 8px 4px 7px 9px;
+    padding: 9px 3px 8px 7px;
     border-radius: 7px;
   }
 }

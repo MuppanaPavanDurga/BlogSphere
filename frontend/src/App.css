@@ -1,47 +1,94 @@
-/* App.css */
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-  background: #f8fafc;
-}
-
-.main-content {
-  padding-top: 56px; /* matches Navigation bar height */
-  min-height: 94vh;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Make sure all page content clears navbar */
-@media (max-width: 900px) {
-  .main-content {
-    padding-top: 56px;
-  }
-}
-
-@media (max-width: 600px) {
-  .main-content {
-    padding-top: 56px;
-  }
-}
-
-/* Card/Form spacing - prevents underlapping navbar */
-.card, .form-container {
-  margin: 27px auto 16px auto;
+/* General form and card (used for Login, Register, Contact, About, etc.) */
+.form-container, .info-card {
+  margin: 28px auto;
   max-width: 420px;
-  width: 95vw;
+  width: 97vw;
   background: #fff;
-  border-radius: 11px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.09);
-  padding: 26px 19px 24px 19px;
+  border-radius: 13px;
+  box-shadow: 0 2px 18px rgba(48,102,190,0.09);
+  padding: 30px 22px 27px 22px;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (max-width: 768px) {
-  .card, .form-container {
-    width: 99vw;
-    padding: 14px 8px 9px 10px;
-    margin: 17px 1.5vw 15px 1.5vw;
+.form-title, .info-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2969b7;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.form-field, .info-field {
+  margin-bottom: 17px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 6px;
+  font-size: 1.06rem;
+  color: #31435b;
+}
+
+.form-input, .form-textarea {
+  padding: 10px 12px;
+  font-size: 1.04rem;
+  border: 1.5px solid #dbeafe;
+  border-radius: 7px;
+  transition: border 0.2s;
+  outline: none;
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: #5d8afc;
+  background: #f3faff;
+}
+
+.form-btn {
+  background-color: #3066be;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 11px 13px;
+  font-size: 1.09rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 13px;
+  transition: background 0.2s;
+}
+
+.form-btn:hover {
+  background: #254d94;
+}
+
+.form-error {
+  color: #e22c2c;
+  background: #ffeaea;
+  border-radius: 7px;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .form-container, .info-card {
+    padding: 9px 5px 13px 7px;
     border-radius: 8px;
+    min-width: 98vw;
+    margin: 14px 1vw;
+  }
+  .form-title, .info-title {
+    font-size: 1.09rem;
+  }
+  .form-input, .form-textarea {
+    font-size: 0.97rem;
+    padding: 7px 6px;
+  }
+  .form-btn {
+    padding: 8px 11px;
+    font-size: 0.97rem;
   }
 }

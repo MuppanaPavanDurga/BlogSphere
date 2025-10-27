@@ -1,5 +1,3 @@
-/* Navigation.css */
-
 .navbar {
   width: 100vw;
   position: fixed;
@@ -34,10 +32,11 @@
   letter-spacing: 1px;
 }
 
+/* Links container */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 14px;
 }
 
 .nav-links a {
@@ -45,12 +44,11 @@
   text-decoration: none;
   font-size: 1.08rem;
   transition: color 0.2s;
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-radius: 4px;
 }
 
-.nav-links a:hover,
-.logout-btn:hover {
+.nav-links a:hover, .logout-btn:hover {
   color: #ffd166;
   background: rgba(0,0,0,0.08);
 }
@@ -63,7 +61,7 @@
   font-size: 1.01rem;
   padding: 7px 14px;
   border-radius: 6px;
-  margin-left: 14px;
+  margin-left: 12px;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -105,7 +103,7 @@
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* Responsive styles for mobile */
+/* Responsive: navbar collapses, links stack, hamburger shows */
 @media (max-width: 900px) {
   .nav-head { padding: 0 12px; }
   .nav-links a { font-size: 0.99rem; padding: 8px 7px; }
