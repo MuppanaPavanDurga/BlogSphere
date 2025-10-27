@@ -31,24 +31,31 @@
 }
 
 .post-card h3 {
-  margin-top: 0;
   font-size: 1.3rem;
   color: #2969b7;
+  margin-top: 0;
   margin-bottom: 14px;
   font-weight: bold;
   line-height: 1.18;
 }
 
-.post-card p {
-  font-size: 1.11rem;
-  color: #232323;
-  margin-bottom: 0.9em;
+.post-content {
+  max-width: 680px;
 }
 
-.post-card .meta {
+.post-para {
+  margin: 0 0 10px 0;
+  font-size: 1.09rem;
+  line-height: 1.7;
+  color: #23282d;
+  text-align: left;
+  word-break: break-word;
+}
+
+.meta {
   font-size: 1rem;
   color: #5d8afc;
-  margin-top: 24px;
+  margin-top: 12px;
   font-style: italic;
   text-align: right;
 }
@@ -62,8 +69,17 @@
     padding: 0 2vw;
   }
   .post-card {
-    max-width: 95vw;
+    max-width: 97vw;
     padding: 13px 9px 10px 13px;
   }
-  .post-card h3 { font-size: 1.12rem; }
+  .post-card h3 {
+    font-size: 1.14rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .post-card {
+    padding: 8px 4px 7px 9px;
+    border-radius: 7px;
+  }
 }

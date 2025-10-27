@@ -7,26 +7,25 @@ import Profile from "./components/Profile";
 import CreatePost from "./components/CreatePost";
 import Contact from "./components/Contact";
 import About from "./components/About";
-import Posts from "./components/Posts"; // <-- Import here
+import Posts from "./components/Posts"; // Make sure imported
 
 function App() {
   return (
     <BrowserRouter>
-    <div className="main-content">
       <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/createpost" element={<CreatePost />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/posts" element={<Posts />} /> {/* <-- Add this */}
-      </Routes>
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/createpost" element={<CreatePost />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/posts" element={<Posts />} /> {/* <-- For Posts */}
+        </Routes>
       </div>
     </BrowserRouter>
   );
 }
-
 export default App;

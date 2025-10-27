@@ -7,29 +7,41 @@ body {
 }
 
 .main-content {
-  padding-top: 64px; /* Adjust to the actual navbar height */
-  min-height: 90vh;
+  padding-top: 56px; /* matches Navigation bar height */
+  min-height: 94vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make sure all page content clears navbar */
+@media (max-width: 900px) {
+  .main-content {
+    padding-top: 56px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding-top: 56px;
+  }
 }
 
 /* Card/Form spacing - prevents underlapping navbar */
 .card, .form-container {
-  margin: 20px auto;
-  max-width: 400px;
-  width: 90vw;
+  margin: 27px auto 16px auto;
+  max-width: 420px;
+  width: 95vw;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 11px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.09);
-  padding: 20px;
+  padding: 26px 19px 24px 19px;
 }
 
-/* Responsive fixes */
 @media (max-width: 768px) {
-  .main-content {
-    padding-top: 56px;
-  }
   .card, .form-container {
-    width: 98vw;
-    padding: 10px;
-    margin: 10px 3px;
+    width: 99vw;
+    padding: 14px 8px 9px 10px;
+    margin: 17px 1.5vw 15px 1.5vw;
+    border-radius: 8px;
   }
 }

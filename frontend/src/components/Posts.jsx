@@ -19,6 +19,15 @@ function Posts() {
       });
   }, []);
 
+  // Split content into paragraphs for readability
+  function formatContent(content) {
+    return content
+      ? content.split(/\r?\n\r?\n/).map((para, idx) =>
+          <p className="post-para" key={idx}>{para.trim()}</p>
+        )
+      : null;
+  }
+
   return (
     <div className="posts-page-container">
       <h2>All Posts</h2>
@@ -29,7 +38,9 @@ function Posts() {
         {posts.map(post => (
           <div key={post._id || post.id} className="post-card">
             <h3>{post.title}</h3>
-            <p>{post.content || post.body}</p>
+            <div className="post-content">
+              {formatContent(post.content || post.body)}
+            </div>
             <div className="meta">By {post.author || "Unknown"}</div>
           </div>
         ))}
