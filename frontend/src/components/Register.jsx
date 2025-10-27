@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import '../styles/Register.css'; // Or App.css if classes are global
+// import '../styles/Register.css'; // Or App.css if classes are global
+import './App.css';
 
 function Register() {
   const [username, setUsername] = useState("");
