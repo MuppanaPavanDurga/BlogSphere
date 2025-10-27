@@ -1,86 +1,124 @@
+body {
+  /* Only needed if not set in global App.css */
+  background: linear-gradient(120deg, #6d597a 0%, #22223b 70%, #eaac8b 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 14s ease infinite;
+  min-height: 100vh;
+}
+@keyframes gradientMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
 .posts-page-container {
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 80vh;
-  width: 100%;
-  padding-top: 10px;
+  justify-content: flex-start;
+  padding-top: 48px;
+  box-sizing: border-box;
+}
+
+.posts-page-container h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(90deg, #6d597a 30%, #eaac8b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 32px;
 }
 
 .posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 28px;
-  max-width: 1000px;
-  width: 99vw;
+  width: 100vw;
+  max-width: 760px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  box-sizing: border-box;
+  padding-bottom: 40px;
 }
 
 .post-card {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 18px rgba(48,102,190,0.14);
-  padding: 22px 13px 17px 17px;
-  min-height: 120px;
+  background: rgba(245,233,226,0.97);
+  border: 2px solid #eaac8b;
+  box-shadow: 0 4px 18px rgba(106,17,203,0.13);
+  border-radius: 22px;
+  padding: 34px 28px 26px 28px;
+  width: 100%;
+  max-width: 540px;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 14px;
   margin: 0 auto;
-  max-width: 90vw;
-  transition: box-shadow 0.18s, transform 0.18s;
 }
 
 .post-card h3 {
-  font-size: 1.17rem;
-  color: #2969b7;
-  margin-top: 0;
-  margin-bottom: 11px;
+  font-size: 1.37rem;
   font-weight: bold;
-  line-height: 1.18;
+  color: #6d597a;
+  margin: 0 0 6px 0;
+  word-break: break-word;
+  line-height: 1.22;
 }
 
 .post-content {
-  max-width: 98vw;
-  margin-bottom: 14px;
+  width: 100%;
+  margin-bottom: 6px;
 }
-
 .post-para {
-  margin: 0 0 10px 0;
-  font-size: 1.07rem;
-  line-height: 1.7;
-  color: #23282d;
-  text-align: left;
+  font-size: 1.13rem;
+  color: #241140;
+  line-height: 1.82;
+  margin-bottom: 12px;
   word-break: break-word;
+  white-space: pre-line;
+  text-align: left;
+  letter-spacing: 0.01em;
 }
 
 .meta {
-  font-size: 1rem;
-  color: #5d8afc;
-  margin-top: 8px;
+  font-size: 1.02rem;
+  color: #5761a5;
   font-style: italic;
   text-align: right;
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 0;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .posts-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    max-width: 97vw;
-    padding: 0 2vw;
-  }
-  .post-card {
-    max-width: 99vw;
-    padding: 13px 7px 10px 11px;
-  }
-  .post-card h3 {
-    font-size: 1.09rem;
-  }
+.error {
+  color: #ea4b3c;
+  background: rgba(254,202,202,0.91);
+  border-radius: 9px;
+  padding: 8px;
+  text-align: center;
+  font-weight: 500;
+  max-width: 400px;
+  margin: 22px auto 0 auto;
 }
 
-@media (max-width: 600px) {
-  .post-card {
-    padding: 9px 3px 8px 7px;
-    border-radius: 7px;
-  }
+/* Responsive Tweaks */
+@media (max-width: 800px) {
+  .posts-grid { max-width: 97vw; gap: 18px;}
+  .post-card { max-width: 99vw; padding: 15px 7px 13px 7px; border-radius: 14px;}
+  .post-card h3 { font-size: 1.13rem;}
+  .post-para { font-size: 1rem;}
+  .meta { font-size: 0.97rem;}
+}
+@media (max-width: 500px) {
+  .post-card { padding: 9px 2vw 9px 2vw; border-radius: 10px;}
+  .post-card h3 { font-size: 1rem;}
+  .post-para { font-size: 0.97rem;}
 }
