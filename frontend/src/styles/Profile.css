@@ -9,7 +9,6 @@
   align-items: center;
   box-sizing: border-box;
 }
-
 @keyframes gradientMove {
   0% {background-position:0% 50%;}
   50% {background-position:100% 50%;}
@@ -83,7 +82,7 @@
 
 .personal-post {
   width: 100vw;
-  max-width: 950px;
+  max-width: 650px;
   margin: 0 auto 40px auto;
   padding: 0 2vw;
   display: flex;
@@ -101,7 +100,7 @@
 }
 
 .post-card {
-  background: rgba(245,233,226,0.96);
+  background: rgba(245,233,226,0.97);
   border: 2px solid #eaac8b;
   border-radius: 19px;
   box-shadow: 0 4px 18px rgba(106,17,203,0.09);
@@ -112,48 +111,60 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   align-items: flex-start;
   justify-content: center;
   position: relative;
 }
 
 #head {
-  font-size: 1.12rem;
+  font-size: 1.17rem;
   font-weight: 700;
   color: #6d597a;
-  margin-bottom: 6px;
+  margin-bottom: 7px;
+  line-height: 1.2;
   word-break: break-word;
 }
 
-#content {
-  font-size: 1.05rem;
-  color: #33323a;
-  font-weight: 500;
-  margin-bottom: 7px;
-  word-break: break-word;
+.post-content {
+  width: 100%;
+  margin-bottom: 8px;
 }
+
+.post-para {
+  font-size: 1.09rem;
+  color: #31214d;
+  line-height: 1.72;
+  margin: 0 0 9px 0;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
 #author {
-  font-size: 1.03rem;
+  font-size: 1.01rem;
   color: #5661a6;
   font-style: italic;
-  margin-bottom: 0px;
+  text-align: right;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 0;
 }
 
+/* Button group for edit/delete */
 .button-group {
   display: flex;
-  gap: 13px;
-  margin-top: 4px;
+  gap: 12px;
+  margin-top: 2px;
 }
 
 .button-group button {
-  padding: 8px 16px;
+  padding: 8px 17px;
   background: linear-gradient(90deg, #eaac8b 66%, #6d597a 100%);
   border: none;
   border-radius: 13px;
   color: #fff;
   font-weight: 600;
-  font-size: 0.98rem;
+  font-size: 0.99rem;
   cursor: pointer;
   transition: background 0.22s;
 }
@@ -188,6 +199,11 @@
     max-width: 99vw;
     gap: 10px;
   }
-  #head, #content, #author, #home-head { font-size: 0.99rem;}
-  .button-group button { font-size:0.92rem;padding:6px 10px;}
+  #head, .post-content, #author, #home-head { font-size: 0.99rem;}
+  .button-group button { font-size:0.92rem;padding:6px 11px;}
+}
+
+@media (max-width: 400px) {
+  .post-card { padding: 7px 2vw 7px 2vw; border-radius: 10px;}
+  #head, .post-content, #author { font-size: 0.94rem;}
 }
