@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios"; // If you plan to use real API
-import '../styles/Contact.css'; // Or App.css/global
+import '../App.css'; // Or App.css/global
 
 function Contact() {
   const [name, setName] = useState("");

@@ -1,5 +1,29 @@
-/* General form and card (used for Login, Register, Contact, About, etc.) */
-.form-container, .info-card {
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: #f8fafc;
+}
+
+.main-content {
+  padding-top: 56px; /* matches Navigation bar height */
+  min-height: 94vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    padding-top: 56px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding-top: 56px;
+  }
+}
+
+.card, .form-container, .info-card {
   margin: 28px auto;
   max-width: 420px;
   width: 97vw;
@@ -9,6 +33,15 @@
   padding: 30px 22px 27px 22px;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .card, .form-container, .info-card {
+    padding: 12px 7px 16px 8px;
+    border-radius: 9px;
+    min-width: 98vw;
+    margin: 14px 1vw;
+  }
 }
 
 .form-title, .info-title {
@@ -41,7 +74,8 @@
   outline: none;
 }
 
-.form-input:focus, .form-textarea:focus {
+.form-input:focus,
+.form-textarea:focus {
   border-color: #5d8afc;
   background: #f3faff;
 }
@@ -59,7 +93,13 @@
   transition: background 0.2s;
 }
 
-.form-btn:hover {
+.form-btn[disabled] {
+  background: #bfc8df;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.form-btn:hover:not([disabled]) {
   background: #254d94;
 }
 
@@ -70,25 +110,34 @@
   padding: 8px;
   margin-bottom: 8px;
   font-weight: 500;
+  text-align: center;
+}
+.form-success {
+  color: #18a141;
+  background: #e6fbe9;
+  border-radius: 7px;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-align: center;
 }
 
-/* Responsive tweaks */
-@media (max-width: 600px) {
-  .form-container, .info-card {
-    padding: 9px 5px 13px 7px;
-    border-radius: 8px;
-    min-width: 98vw;
-    margin: 14px 1vw;
-  }
-  .form-title, .info-title {
-    font-size: 1.09rem;
-  }
-  .form-input, .form-textarea {
-    font-size: 0.97rem;
-    padding: 7px 6px;
-  }
-  .form-btn {
-    padding: 8px 11px;
-    font-size: 0.97rem;
-  }
+.info-field p {
+  font-size: 1.06rem;
+  color: #2d355e;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 70px;
+  max-height: 250px;
+}
+
+/* Responsive tweaks for small screens */
+@media (max-width: 400px) {
+  .form-title, .info-title { font-size: 1.02rem; }
+  .form-input, .form-textarea { font-size: 0.91rem; }
+  .form-btn { font-size: 0.91rem; padding: 7px 8px; }
 }
