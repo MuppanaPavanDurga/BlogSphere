@@ -1,33 +1,64 @@
 .home-container {
+  min-height: 83vh;
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #22223b, #6d597a 70%, #eaac8b 100%);
-  background-size: 400% 400%;
-  animation: gradientMove 16s ease infinite;
-  box-sizing: border-box;
-  padding-top: 70px;
+  justify-content: flex-start;
+  padding-top: 44px;
 }
 
-@keyframes gradientMove {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
+/* Card for welcome message (optional if you want this centered) */
+.center-text {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 23px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #874be6;
+  background: linear-gradient(90deg,#f093fb 40%,#667eea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.logout-btn {
-  padding: 8px 22px;
-  margin-left: 20px;
-  background: #ff7766;
-  color: white;
+
+/* Button styles for login/register/logout */
+.button-container {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+#login-btn, #register-btn, .logout-btn {
+  background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
   border: none;
-  border-radius: 25px;
-  font-weight: bold;
+  border-radius: 15px;
+  padding: 14px 30px;
+  font-size: 1.08rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: box-shadow 0.22s, transform 0.19s;
+  box-shadow: 0 4px 12px rgba(240,147,251,0.17);
+  letter-spacing: 0.1px;
 }
-.logout-btn:hover {
-  background: #f33;
+
+#login-btn:hover, #register-btn:hover, .logout-btn:hover {
+  box-shadow: 0 8px 20px rgba(240,147,251,0.22);
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #f5576c 0%, #f093fb 100%);
+}
+
+/* Responsive tweaks for mobile */
+@media (max-width: 720px) {
+  .center-text { font-size: 1.33rem; margin-top: 15px; }
+  .button-container { gap: 10px; }
+  #login-btn, #register-btn, .logout-btn { padding: 10px 14px; font-size: 0.97rem; border-radius:12px;}
+}
+
+@media (max-width: 440px) {
+  .center-text { font-size: 1.01rem; }
+  #login-btn, #register-btn, .logout-btn { font-size: 0.91rem; padding: 8px 7vw;}
 }
