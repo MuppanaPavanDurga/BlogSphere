@@ -1,5 +1,5 @@
 import React from "react";
-import '../App.css'; // Or App.css/global
+import '../styles/About.css'; // Or App.css/global
 
 function About() {
   return (
