@@ -10,7 +10,7 @@ function Posts() {
   useEffect(() => {
     axios.get(process.env.REACT_APP_API_URL + '/posts')
       .then(res => {
-        setPosts(res.data); // assuming res.data is your posts array
+        setPosts(res.data);
         setLoading(false);
       })
       .catch(e => {
@@ -20,7 +20,7 @@ function Posts() {
   }, []);
 
   return (
-    <div className="main-content">
+    <div className="posts-page-container">
       <h2>All Posts</h2>
       {loading && <p>Loading...</p>}
       {err && <p className="error">{err}</p>}
@@ -30,7 +30,7 @@ function Posts() {
           <div key={post._id || post.id} className="post-card">
             <h3>{post.title}</h3>
             <p>{post.content || post.body}</p>
-            <p className="meta">By {post.author || "Unknown"}</p>
+            <div className="meta">By {post.author || "Unknown"}</div>
           </div>
         ))}
       </div>
