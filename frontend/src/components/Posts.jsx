@@ -6,16 +6,21 @@ function Posts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
+  // Search + Filters
   const [search, setSearch] = useState("");
+  const [authorFilter, setAuthorFilter] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
+  const [tagFilter, setTagFilter] = useState("");
+  // Comments + Likes
   const [comments, setComments] = useState({});
   const [likes, setLikes] = useState({});
-  const [showComments, setShowComments] = useState({}); // Track which post's comments are visible
+  const [showComments, setShowComments] = useState({});
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_API_URL + '/posts')
       .then(res => {
         setPosts(res.data);
-        // Initialize likes/comments/showComments for all posts
+        // Initialize likes, comments and showComments for all posts
         const likesObj = {}, commentsObj = {}, showObj = {};
         res.data.forEach(post => {
           likesObj[post._id || post.id] = 0;
@@ -41,10 +46,19 @@ function Posts() {
       : null;
   }
 
+  // Filter option lists
+  const authors = [...new Set(posts.map(post => post.author || "Unknown"))];
+  const tags = [...new Set((posts.flatMap(p => p.tags || [])))];
+
+  // Filtering logic
   const filteredPosts = posts.filter(post =>
-    (post.title?.toLowerCase().includes(search.toLowerCase()) ||
-     post.content?.toLowerCase().includes(search.toLowerCase()) ||
-     post.author?.toLowerCase().includes(search.toLowerCase()))
+    (search === "" ||
+      post.title?.toLowerCase().includes(search.toLowerCase()) ||
+      post.content?.toLowerCase().includes(search.toLowerCase()) ||
+      post.author?.toLowerCase().includes(search.toLowerCase())) &&
+    (authorFilter === "" || (post.author && post.author === authorFilter)) &&
+    (dateFilter === "" || (post.date && post.date.startsWith(dateFilter))) &&
+    (tagFilter === "" || (post.tags && post.tags.includes(tagFilter)))
   );
 
   function handleLike(id) {
@@ -53,7 +67,6 @@ function Posts() {
       [id]: prev[id] + 1
     }));
   }
-
   function handleAddComment(id, comment) {
     if (!comment.trim()) return;
     setComments(prev => ({
@@ -61,7 +74,6 @@ function Posts() {
       [id]: [...prev[id], comment.trim()]
     }));
   }
-
   function handleToggleComments(id) {
     setShowComments(prev => ({
       ...prev,
@@ -72,6 +84,7 @@ function Posts() {
   return (
     <div className="posts-page-container">
       <h2>All Posts</h2>
+      {/* Search & Filters */}
       <input
         type="text"
         className="search-input"
@@ -79,6 +92,28 @@ function Posts() {
         value={search}
         onChange={e => setSearch(e.target.value)}
       />
+      <select
+        value={authorFilter}
+        onChange={e => setAuthorFilter(e.target.value)}
+        className="filter-select"
+      >
+        <option value="">All Authors</option>
+        {authors.map(a => <option key={a} value={a}>{a}</option>)}
+      </select>
+      <input
+        type="date"
+        value={dateFilter}
+        onChange={e => setDateFilter(e.target.value)}
+        className="filter-date"
+      />
+      <select
+        value={tagFilter}
+        onChange={e => setTagFilter(e.target.value)}
+        className="filter-select"
+      >
+        <option value="">All Categories</option>
+        {tags.map(t => <option key={t} value={t}>{t}</option>)}
+      </select>
       {loading && <p>Loading...</p>}
       {err && <p className="error">{err}</p>}
       {!loading && filteredPosts.length === 0 && <p>No posts found.</p>}
@@ -86,11 +121,16 @@ function Posts() {
         {filteredPosts.map(post => (
           <div key={post._id || post.id} className="post-card">
             <h3>{post.title}</h3>
-            <div className="post-content">
-              {formatContent(post.content || post.body)}
+            <div className="post-content">{formatContent(post.content || post.body)}</div>
+            <div className="meta">
+              By {post.author || "Unknown"} | {post.date && post.date.slice(0,10)}
             </div>
-            <div className="meta">By {post.author || "Unknown"}</div>
-            {/* Reaction Button */}
+            <div className="tags-list">
+              {post.tags && post.tags.map((tag, i) => (
+                <span className="tag" key={i}>{tag}</span>
+              ))}
+            </div>
+            {/* Reactions */}
             <div className="reactions">
               <button className="like-btn" onClick={() => handleLike(post._id || post.id)}>
                 ❤️ {likes[post._id || post.id] || 0}
@@ -102,7 +142,6 @@ function Posts() {
                 {showComments[post._id || post.id] ? "Hide Comments" : "Show Comments"}
               </button>
             </div>
-            {/* Collapsible Comments Section */}
             {showComments[post._id || post.id] && (
               <div className="comments-section">
                 <h4>Comments</h4>
@@ -121,7 +160,7 @@ function Posts() {
   );
 }
 
-// Comment input component
+// Comment input component for reuse
 function CommentInput({ onAdd }) {
   const [value, setValue] = useState("");
   return (

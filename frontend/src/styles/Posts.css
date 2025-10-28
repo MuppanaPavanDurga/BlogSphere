@@ -251,3 +251,42 @@ body {
   .comment { font-size: 0.94rem; padding: 6px 10px; }
   .comment-btn { font-size: 0.93rem; padding: 7px 10px;}
 }
+.filter-select {
+  max-width: 200px;
+  padding: 8px;
+  margin: 0 12px 12px 0;
+  border-radius: 9px;
+  border: 1.5px solid #eaac8b;
+  background: #f7dedc;
+  color: #322a2a;
+  font-size: 1rem;
+  margin-bottom: 18px;
+}
+.filter-date {
+  max-width: 160px;
+  padding: 8px;
+  margin-right: 12px;
+  border-radius: 9px;
+  border: 1.5px solid #eaac8b;
+  background: #f7dedc;
+  color: #322a2a;
+  font-size: 1rem;
+  margin-bottom: 18px;
+}
+.tags-list {
+  margin-top: 12px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.tag {
+  background: linear-gradient(90deg,#eaac8b 70%, #6d597a 100%);
+  color: #fff;
+  font-size: 0.97rem;
+  border-radius: 12px;
+  padding: 4px 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 5px rgba(106,17,203,0.06);
+}
