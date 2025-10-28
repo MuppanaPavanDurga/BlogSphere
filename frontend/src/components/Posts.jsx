@@ -6,12 +6,10 @@ function Posts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
-  // Search + Filters
   const [search, setSearch] = useState("");
   const [authorFilter, setAuthorFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [tagFilter, setTagFilter] = useState("");
-  // Comments + Likes
   const [comments, setComments] = useState({});
   const [likes, setLikes] = useState({});
   const [showComments, setShowComments] = useState({});
@@ -20,11 +18,10 @@ function Posts() {
     axios.get(process.env.REACT_APP_API_URL + '/posts')
       .then(res => {
         setPosts(res.data);
-        // Initialize likes, comments and showComments for all posts
         const likesObj = {}, commentsObj = {}, showObj = {};
         res.data.forEach(post => {
-          likesObj[post._id || post.id] = 0;
-          commentsObj[post._id || post.id] = [];
+          likesObj[post._id || post.id] = post.likes || 0;
+          commentsObj[post._id || post.id] = post.comments ? post.comments.map(com => com.text) : [];
           showObj[post._id || post.id] = false;
         });
         setLikes(likesObj);
@@ -46,18 +43,19 @@ function Posts() {
       : null;
   }
 
-  // Filter option lists
   const authors = [...new Set(posts.map(post => post.author || "Unknown"))];
   const tags = [...new Set((posts.flatMap(p => p.tags || [])))];
 
-  // Filtering logic
   const filteredPosts = posts.filter(post =>
     (search === "" ||
       post.title?.toLowerCase().includes(search.toLowerCase()) ||
       post.content?.toLowerCase().includes(search.toLowerCase()) ||
       post.author?.toLowerCase().includes(search.toLowerCase())) &&
     (authorFilter === "" || (post.author && post.author === authorFilter)) &&
-    (dateFilter === "" || (post.date && post.date.startsWith(dateFilter))) &&
+    (dateFilter === "" || (
+      post.createdAt &&
+      new Date(post.createdAt).toISOString().slice(0, 10) === dateFilter
+    )) &&
     (tagFilter === "" || (post.tags && post.tags.includes(tagFilter)))
   );
 
@@ -66,13 +64,16 @@ function Posts() {
       ...prev,
       [id]: prev[id] + 1
     }));
+    // For real app, POST to backend here!
   }
+
   function handleAddComment(id, comment) {
     if (!comment.trim()) return;
     setComments(prev => ({
       ...prev,
       [id]: [...prev[id], comment.trim()]
     }));
+    // For real app, POST to backend here!
   }
   function handleToggleComments(id) {
     setShowComments(prev => ({
@@ -84,7 +85,6 @@ function Posts() {
   return (
     <div className="posts-page-container">
       <h2>All Posts</h2>
-      {/* Search & Filters */}
       <input
         type="text"
         className="search-input"
@@ -123,20 +123,21 @@ function Posts() {
             <h3>{post.title}</h3>
             <div className="post-content">{formatContent(post.content || post.body)}</div>
             <div className="meta">
-              By {post.author || "Unknown"} | {post.date && post.date.slice(0,10)}
+              By {post.author || "Unknown"}
+              <span className="date-stamp">
+                {" | "}{post.createdAt ? new Date(post.createdAt).toLocaleString() : ""}
+              </span>
             </div>
             <div className="tags-list">
               {post.tags && post.tags.map((tag, i) => (
                 <span className="tag" key={i}>{tag}</span>
               ))}
             </div>
-            {/* Reactions */}
             <div className="reactions">
               <button className="like-btn" onClick={() => handleLike(post._id || post.id)}>
                 ❤️ {likes[post._id || post.id] || 0}
               </button>
             </div>
-            {/* Comments Toggle */}
             <div className="toggle-comments">
               <button onClick={() => handleToggleComments(post._id || post.id)} className="show-comments-btn">
                 {showComments[post._id || post.id] ? "Hide Comments" : "Show Comments"}
@@ -160,7 +161,6 @@ function Posts() {
   );
 }
 
-// Comment input component for reuse
 function CommentInput({ onAdd }) {
   const [value, setValue] = useState("");
   return (
