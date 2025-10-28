@@ -139,3 +139,63 @@ body {
   .post-card h3 { font-size: 1rem;}
   .post-para { font-size: 0.97rem;}
 }
+.reactions {
+  margin: 14px 0 0 0;
+}
+.like-btn {
+  border: none;
+  background: none;
+  font-size: 1.25rem;
+  color: #d81b60;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: transform 0.1s;
+}
+.like-btn:active {
+  transform: scale(1.1);
+}
+.comments-section {
+  margin-top: 20px;
+  width: 100%;
+}
+.comments-section h4 {
+  font-size: 1.09rem;
+  margin-bottom: 8px;
+  color: #6d597a;
+}
+.comments-list {
+  margin-bottom: 7px;
+}
+.comment {
+  padding: 7px 13px;
+  background: #f7dedc;
+  color: #22223b;
+  border-radius: 9px;
+  margin-bottom: 6px;
+  font-size: 1.01rem;
+}
+.comment-input {
+  flex: 1;
+  padding: 9px;
+  border-radius: 8px;
+  border: 1.5px solid #eaac8b;
+  font-size: 1rem;
+  background: #faf3f3;
+  color: #22223b;
+}
+.comment-input:focus {
+  border-color: #6d597a;
+}
+.comment-btn {
+  padding: 8px 14px;
+  border-radius: 7px;
+  border: none;
+  background: linear-gradient(90deg,#eaac8b 70%, #6d597a 100%);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+.comment-btn:hover {
+  background: linear-gradient(90deg, #6d597a 70%, #eaac8b 100%);
+}
