@@ -10,6 +10,23 @@ body {
   50% {background-position:100% 50%;}
   100% {background-position:0% 50%;}
 }
+.search-input {
+  max-width: 340px;
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 32px;
+  border-radius: 14px;
+  border: 2px solid #eaac8b;
+  font-size: 1.08rem;
+  box-sizing: border-box;
+  outline: none;
+  background: #f7dedc;
+  color: #322a2a;
+}
+
+.search-input:focus {
+  border-color: #6d597a;
+}
 
 .posts-page-container {
   width: 100vw;

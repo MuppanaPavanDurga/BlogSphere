@@ -6,6 +6,7 @@ function Posts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
+  const [search, setSearch] = useState(""); // <-- Add state for search
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_API_URL + '/posts')
@@ -28,14 +29,29 @@ function Posts() {
       : null;
   }
 
+  // Filter posts based on search input (case-insensitive)
+  const filteredPosts = posts.filter(post =>
+    (post.title?.toLowerCase().includes(search.toLowerCase()) ||
+     post.content?.toLowerCase().includes(search.toLowerCase()) ||
+     post.author?.toLowerCase().includes(search.toLowerCase()))
+  );
+
   return (
     <div className="posts-page-container">
       <h2>All Posts</h2>
+      {/* Search Input */}
+      <input
+        type="text"
+        className="search-input"
+        placeholder="Search posts..."
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+      />
       {loading && <p>Loading...</p>}
       {err && <p className="error">{err}</p>}
-      {!loading && posts.length === 0 && <p>No posts found.</p>}
+      {!loading && filteredPosts.length === 0 && <p>No posts found.</p>}
       <div className="posts-grid">
-        {posts.map(post => (
+        {filteredPosts.map(post => (
           <div key={post._id || post.id} className="post-card">
             <h3>{post.title}</h3>
             <div className="post-content">
