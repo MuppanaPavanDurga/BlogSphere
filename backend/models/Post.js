@@ -7,3 +7,5 @@ const PostSchema = new mongoose.Schema({
   comments: [{ text: String, date: Date }],
   likes: { type: Number, default: 0 }
 });
+
+export default mongoose.model("Post", postSchema);
