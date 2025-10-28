@@ -91,6 +91,32 @@ app.delete("/posts/:id", async (req, res) => {
   res.json({ message: "Post deleted successfully" });
 });
 
+//API for Comments
+app.post('/posts/:id/comments', async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  post.comments.push({ text: req.body.text, date: new Date() });
+  await post.save();
+  res.json(post.comments);
+});
+
+app.get('/posts/:id/comments', async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  res.json(post.comments);
+});
+
+//API for Likes
+
+app.post('/posts/:id/like', async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  post.likes += 1;
+  await post.save();
+  res.json({ likes: post.likes });
+});
+app.get('/posts/:id/likes', async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  res.json({ likes: post.likes });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
