@@ -7,22 +7,24 @@ function Posts() {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
   const [search, setSearch] = useState("");
-  // Add state for comments and likes
   const [comments, setComments] = useState({});
   const [likes, setLikes] = useState({});
+  const [showComments, setShowComments] = useState({}); // Track which post's comments are visible
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_API_URL + '/posts')
       .then(res => {
         setPosts(res.data);
-        // Initialize likes/comments for all posts
-        const likesObj = {}, commentsObj = {};
+        // Initialize likes/comments/showComments for all posts
+        const likesObj = {}, commentsObj = {}, showObj = {};
         res.data.forEach(post => {
           likesObj[post._id || post.id] = 0;
           commentsObj[post._id || post.id] = [];
+          showObj[post._id || post.id] = false;
         });
         setLikes(likesObj);
         setComments(commentsObj);
+        setShowComments(showObj);
         setLoading(false);
       })
       .catch(e => {
@@ -45,7 +47,6 @@ function Posts() {
      post.author?.toLowerCase().includes(search.toLowerCase()))
   );
 
-  // Like/heart handler
   function handleLike(id) {
     setLikes(prev => ({
       ...prev,
@@ -53,12 +54,18 @@ function Posts() {
     }));
   }
 
-  // Add comment handler
   function handleAddComment(id, comment) {
     if (!comment.trim()) return;
     setComments(prev => ({
       ...prev,
       [id]: [...prev[id], comment.trim()]
+    }));
+  }
+
+  function handleToggleComments(id) {
+    setShowComments(prev => ({
+      ...prev,
+      [id]: !prev[id]
     }));
   }
 
@@ -89,16 +96,24 @@ function Posts() {
                 ❤️ {likes[post._id || post.id] || 0}
               </button>
             </div>
-            {/* Comments Section */}
-            <div className="comments-section">
-              <h4>Comments</h4>
-              <div className="comments-list">
-                {(comments[post._id || post.id] || []).map((comment, idx) => (
-                  <div className="comment" key={idx}>{comment}</div>
-                ))}
-              </div>
-              <CommentInput onAdd={comment => handleAddComment(post._id || post.id, comment)} />
+            {/* Comments Toggle */}
+            <div className="toggle-comments">
+              <button onClick={() => handleToggleComments(post._id || post.id)} className="show-comments-btn">
+                {showComments[post._id || post.id] ? "Hide Comments" : "Show Comments"}
+              </button>
             </div>
+            {/* Collapsible Comments Section */}
+            {showComments[post._id || post.id] && (
+              <div className="comments-section">
+                <h4>Comments</h4>
+                <div className="comments-list">
+                  {(comments[post._id || post.id] || []).map((comment, idx) => (
+                    <div className="comment" key={idx}>{comment}</div>
+                  ))}
+                </div>
+                <CommentInput onAdd={comment => handleAddComment(post._id || post.id, comment)} />
+              </div>
+            )}
           </div>
         ))}
       </div>

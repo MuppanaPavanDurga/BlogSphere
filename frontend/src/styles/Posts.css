@@ -139,6 +139,7 @@ body {
   .post-card h3 { font-size: 1rem;}
   .post-para { font-size: 0.97rem;}
 }
+/* Like button: reactions */
 .reactions {
   margin: 14px 0 0 0;
 }
@@ -155,47 +156,98 @@ body {
 .like-btn:active {
   transform: scale(1.1);
 }
-.comments-section {
-  margin-top: 20px;
-  width: 100%;
+
+/* Toggle Show/Hide Comments button */
+.toggle-comments {
+  margin-top: 6px;
 }
+.show-comments-btn {
+  padding: 7px 16px;
+  border-radius: 9px;
+  border: none;
+  background: linear-gradient(90deg,#eaac8b 70%, #6d597a 100%);
+  color: #22223b;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.98rem;
+  margin-bottom: 2px;
+  margin-top: 3px;
+  box-shadow: 0 2px 10px rgba(106,17,203,0.07);
+  transition: background 0.22s, color 0.22s;
+}
+.show-comments-btn:hover {
+  background: linear-gradient(90deg, #6d597a 70%, #eaac8b 100%);
+  color: #fff;
+}
+
+/* Collapsible comments section */
+.comments-section {
+  margin-top: 18px;
+  width: 100%;
+  background: rgba(245,233,226,0.76);
+  border-radius: 18px;
+  box-shadow: 0 1px 10px rgba(106, 17, 203, 0.04);
+  padding: 18px 15px 15px 13px;
+  transition: max-height 0.3s;
+}
+
+/* Comments header */
 .comments-section h4 {
   font-size: 1.09rem;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: #6d597a;
 }
+
+/* List of comments */
 .comments-list {
   margin-bottom: 7px;
+  padding: 0;
 }
 .comment {
-  padding: 7px 13px;
+  padding: 8px 15px;
   background: #f7dedc;
   color: #22223b;
   border-radius: 9px;
-  margin-bottom: 6px;
-  font-size: 1.01rem;
+  margin-bottom: 8px;
+  font-size: 1.04rem;
+  box-shadow: 0 1px 4px rgba(106,17,203,0.07);
+  word-break: break-word;
 }
+
+/* Add comment input and button */
 .comment-input {
   flex: 1;
-  padding: 9px;
+  padding: 10px 12px;
   border-radius: 8px;
-  border: 1.5px solid #eaac8b;
+  border: 2px solid #eaac8b;
   font-size: 1rem;
   background: #faf3f3;
   color: #22223b;
+  outline: none;
+  transition: border-color 0.18s;
 }
 .comment-input:focus {
   border-color: #6d597a;
 }
 .comment-btn {
-  padding: 8px 14px;
+  padding: 8px 17px;
   border-radius: 7px;
   border: none;
   background: linear-gradient(90deg,#eaac8b 70%, #6d597a 100%);
   color: #fff;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 1px 7px rgba(106,17,203,0.08);
+  margin-left: 6px;
+  transition: background 0.18s;
 }
 .comment-btn:hover {
   background: linear-gradient(90deg, #6d597a 70%, #eaac8b 100%);
+}
+
+@media (max-width: 700px) {
+  .comments-section { padding: 12px 6px 10px 6px; border-radius: 13px;}
+  .comment { font-size: 0.94rem; padding: 6px 10px; }
+  .comment-btn { font-size: 0.93rem; padding: 7px 10px;}
 }
